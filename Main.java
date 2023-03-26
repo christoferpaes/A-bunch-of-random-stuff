@@ -1,85 +1,132 @@
-/******************************************************************************
+import java.util.* ;
 
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
-interface Sortable{
-    public int compareTo(Sortable b);
-}
-public class CommercialFlight implements Sortable{
-    final static int arrayNumber = 24;
-   private String name;
-   private int flightNumber;
-    private int[] hourOfDepart = new int[arrayNumber];
+class Link {
+    int priority;
+    public Object dataToBe;
     
-    CommercialFlight() {
+    public Link next;
+    Link link = new Link();
+    
+    static Link newLink(Object _dataToBe, int p ) {
+        Link temp = new Link();
+        
+        temp.dataToBe = _dataToBe;
+        temp.priority = p;
+        temp.next = null;
+        return temp;
+    }
+    
+    
+    static Object peek(Link head){
+        return(head).dataToBe;
         
     }
-    public void setName(String _name) {
-        name = _name;
+    
+    static Link push(Link head, Object _dataToBe, int p) {
+        Link start  = (head);
         
-    }
-    public void setFlightNumber(int _flightNumber){
-        flightNumber = _flightNumber;
-    }
-    public int getFlightNumber(){
-        return flightNumber;
         
-    }
-    public String getName(){
-        return name;
-        
-    }
-    public String toString() {
-        return name "this is the name \n" +flightNumber +"this is the flight number \n" ;
-    }
-    public int searchByFlightNumber(int flightNumber, int[] flightArray ) {
-        for(int i = 0; i< flightArray.length; i++) {
-            if(i== flightArray[i]){
-                return flightArray[i] + 0;
-            }
-            else if(i > flightArray[i]){
-                return 1;
-            }
-            else{
-                return -1;
-            }
+        //create a new Link
+        Link temp = newLink(_dataToBe, p) ;
+        if((head).priority > p)  {
+            //Insert New Link before head
+            temp.next = head;
+            (head) = temp;
         }
-    }
-    public String searchByName(String name, String[] arrayOfFlightName){
-        for(int i = 0 ; i < arrayOfFlightName.length; i++){
-          if(i== flightArray[i]){
-                return flightArray[i] + 0;
+        else{
+            while(start.next!= null && start.next.priority < p) {
+                start = start.next;
             }
-            else if(i > flightArray[i]){
-                return 1;
-            }
-            else{
-                return -1;
-            }
+            
+            
+            temp.next = start.next;
+            start.next = temp;
+            
         }
+        return head;
     }
-    public int compareTo(Sortable _CommercialFlight) {
-        if(_CommercialFlight instanceof CommercialFlight) {
-            CommercialFlight other = (CommercialFlight) _CommercialFlight;
-            int reslut = _name.compareTo(other._name);
-            if(result == 0){
-                result = _flightNumber.compareTo(other._flightNumber);
-                return result;
-            }
-            else{
-                return 0 ;
-            }
-        }
+    static int isEmpty(Link head) {
+        return ((head) ==null)?1:0;
     }
-}
-
-public class Main
-{
-	public static void main(String[] args) {
+    
+    public static void main(String[] args) {
 		System.out.println("Hello World");
+        Student student = new Student();
+
+        Student student1 = new Student();
+
+        Student student2 = new Student();
+        Link link = newLink(student, 0  ); 
+    
+
+
+
+        link = push(link, student1, 2);
+        link = push(link , student2, 1); 
+
+
+
+
+
+
+
+
+        while (isEmpty(link)==0) {
+            System.out.printf("%d ", peek(link));
+            link=pop(link);
+        }
 	}
-}
+} // end of  Link class 
+
+
+
+class Queue { 
+    
+    
+    private Link _headOfQueue; 
+    
+    
+    public Queue() {
+        
+        _headOfQueue = null;
+    }
+    public boolean isEmpty ()  {
+        
+        return (_headOfQueue   == null ); 
+    }
+    
+    public String toString() {
+        String s = "  " ;
+        
+        
+        s += "Queue contains \n";
+        
+        s += "---back --- \n"  ;
+        
+        Link curr = _headOfQueue;
+        while(curr !=null) {
+            
+            s+= curr.dataToBe + "\n";
+            
+            curr = curr.next;
+        }
+        
+        s += "--Front ---";
+        return s;
+         
+        
+        
+    }
+    
+public void insert (Object theVariableOfAClassObject ) {
+    
+    Link combine  = new Link () ;
+    
+    combine.dataToBe = theVariableOfAClassObject;
+    
+    combine.next = _headOfQueue;
+    _headOfQueue = combine;
+    
+} 
+
+}  // end of class Queue

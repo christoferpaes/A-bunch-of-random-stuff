@@ -1,5 +1,4 @@
-interface Sortable {
-    public int compareTo(Sortable b);
-} 
-
-
+interface Sortable{
+    public int compareTo(Sortable other);
+    
+}

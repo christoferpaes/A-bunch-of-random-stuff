@@ -1,16 +1,10 @@
 import java.util.* ;
 
-
-class Solo {
-
- static class Link {
+class Link {
     int priority;
     public Object dataToBe;
     
     public Link next;
-
-
- }
     Link link = new Link();
     
     static Link newLink(Object _dataToBe, int p ) {
@@ -22,12 +16,7 @@ class Solo {
         return temp;
     }
     
-    static Link pop(Link head)
-{
-    Link temp = head;
-    (head) = (head).next;
-    return head;
-}
+    
     static Object peek(Link head){
         return(head).dataToBe;
         
@@ -60,33 +49,7 @@ class Solo {
         return ((head) ==null)?1:0;
     }
     
-    public static void main(String[] args) {
-		System.out.println("Hello World");
-        Student student = new Student();
-
-        Student student1 = new Student();
-
-        Student student2 = new Student();
-        Link link = newLink(student, 0  ); 
     
-
-
-
-        link = push(link, student1, 2);
-        link = push(link , student2, 1); 
-
-
-
-
-
-
-
-
-        while (isEmpty(link)==0) {
-            System.out.printf("%d ", peek(link));
-            link=pop(link);
-        }
-	}
 } // end of  Link class 
 
 
@@ -140,4 +103,33 @@ public void insert (Object theVariableOfAClassObject ) {
     
 } 
 
-}  // end of class Queue
+ // end of class Queue
+
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+        Student student = new Student();
+
+        Student student1 = new Student();
+
+        Student student2 = new Student();
+        Link link = newLink(student, 0  ); 
+    
+
+
+
+        link = push(link, student1, 2);
+        link = push(link , student2, 1); 
+
+
+
+
+
+
+
+
+        while (isEmpty(link)==0) {
+            System.out.printf("%d ", peek(link));
+            link=pop(link);
+        }
+	}
+}
