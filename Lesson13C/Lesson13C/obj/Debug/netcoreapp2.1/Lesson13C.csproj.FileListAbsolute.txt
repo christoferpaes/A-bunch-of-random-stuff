@@ -1,0 +1,4 @@
+/Users/ValentinaCarfagno/Projects/Lesson13C/Lesson13C/obj/Debug/netcoreapp2.1/Lesson13C.csprojResolveAssemblyReference.cache
+/Users/ValentinaCarfagno/Projects/Lesson13C/Lesson13C/obj/Debug/netcoreapp2.1/Lesson13C.csproj.CoreCompileInputs.cache
+/Users/ValentinaCarfagno/Projects/Lesson13C/Lesson13C/obj/Debug/netcoreapp2.1/Lesson13C.AssemblyInfoInputs.cache
+/Users/ValentinaCarfagno/Projects/Lesson13C/Lesson13C/obj/Debug/netcoreapp2.1/Lesson13C.AssemblyInfo.cs
