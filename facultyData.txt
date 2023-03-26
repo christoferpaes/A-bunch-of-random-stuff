@@ -1,0 +1,9 @@
+﻿10001:Turing:Allan:CSC
+10002:Ritchie:Dennis:CSC
+10003:Hopper:Grace:CSC
+10004:Gauss:Carl:MATH
+10005:Liebniz:Gottfried:MATH
+10006:Euler:Leonhard:MATH
+10007:Bennett:David:HIST
+10008:Dunn:John:HIST
+10009:Belew:Kathleen:HIST

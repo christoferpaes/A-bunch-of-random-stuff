@@ -1,0 +1,36 @@
+﻿Christofer Paes
+CSC240AA
+Robert Simms/MCC
+Program Assignment # 2
+These schemes are for Dr. Racket and are my answers to the questions from programming assignment number two. These schemes use the compound interest formula A=P(1+r)^t and a monthly interest formula. 
+
+
+;1.
+(* 100 
+(
+expt (+ 1 0.09)
+ 20)
+) 
+
+
+;2.
+ (- (* (- (expt (+ 1 .0075) 37) 1) (/ 100 .0075)) 100)
+
+
+;3.
+((/ (* 5000 .015) (- 1 (expt (+ 1 .015) (- 0 60))))
+
+
+;4.
+ (/ 
+(* 2000 .005)
+ (- (expt (+ 1 .005) 11) 1))
+
+
+;5.
+(* 100000 
+(
+expt (+ 1 .01) 
+(- 0 4)
+)
+)

@@ -1,0 +1,20 @@
+﻿Christofer P Paes
+Homework #2
+MCC/Robert Simms
+240AA
+Dr.Racket Function with ‘b’ representing the balance, the ‘i’ for interest, and ‘t’ for time. 
+
+
+
+
+#lang racket
+(define ( computeLoanPayment b i t)
+(/ (* b i) (- 1 (expt (+ 1 i) (- (* 12 t) ))))
+  )
+
+
+
+
+
+
+This is for the interaction window - (computeLoanPayment 10000 .1 1)
