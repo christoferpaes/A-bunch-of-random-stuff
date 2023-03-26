@@ -5,160 +5,57 @@ GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP
 C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
 Code, Compile, Run and Debug online from anywhere in world.
 
+Write a program to compute the total volume of N spheres, 
+where N is a number entered by the user.  
+For each sphere, ask for the radius, compute the volume, and add that volume to the total.
+Each time you ask the user to enter a number, if the user does not enter a positive number,
+display an error message and ask them again until they enter a positive number.  
+(If the radius is not positive, then do not compute the volume and do not count 
+that as one of the N spheres.)  Display the final total volume (and do not display the 
+cumulative total after each sphere).The volume of a sphere is
+:v = (4/3)
+r3wherev = volume (in cubic inches)r = radius (in inches)
+
 *******************************************************************************/
 
-//Christofer Patrick Paes
-// CSC 240AA// 12/1/21
-// Robert Simmms
-// Homework # 14 
-//This program is demonstrate the use of objects in C++ with certain spec.s 
-#include <stdio.h>
+//Christofer Paes
+//08/30/2021
+//Homework #2
+//This program computer the total number of N Spheres given by the user
+//then requests the radius of each sphere and ..
+//calculates the volume and sets the volume to the total volume after each decrement.
 
 #include <iostream>
-using namespace std;
-//nba class
-char *strnewcpy( char source[] );
-class NBAPlayer
-{
-    char * playerName;
-    char * teamName;
-    int totalGames;
-    int totalPoints;
-    
-    public:
-    
-    NBAPlayer(char _playerName[], char _teamName[], int  _totalGames, 
-    int _totalPoints); // constructor
-    ~NBAPlayer(); //
-    
-    
-    char *getPlayerName(); //accessor
-    char *getTeamName();
-    int getTotalGames() ; 
-    int getTotalPoints(); 
-    
-    double avgPointsPerG(int totalPoints, int totalNumberOfGames);
-    void updateGamesAndPoints(int points);
-    void teamChange (char newTeam[]); 
-    void display();
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-} ;
-NBAPlayer::NBAPlayer (char newPlayerName[], char newTeamName[], int newTotalPoints, 
-int newTotalGames) {
-    teamName= strnewcpy( newTeamName);
-    playerName = strnewcpy(newPlayerName);
-    totalGames = newTotalGames;
-    totalPoints = newTotalPoints ; 
-    
-}
-NBAPlayer::~NBAPlayer()
-{
-    delete[] playerName;
-    delete[] teamName; 
-    
-}
-char * NBAPlayer::getTeamName ()
-{
-    char *teamNameCopy;
-    teamNameCopy = strnewcpy(teamName);
-    return teamNameCopy;
-}
+#include <cmath>
+#include <math.h>
 
-char * NBAPlayer:: getPlayerName() 
-{
-    char * playerNameCopy;
-    playerNameCopy = strnewcpy( playerName);
-    return playerNameCopy;
-}
-
-int NBAPlayer:: getTotalPoints(){
-    return totalPoints;
-}
-int NBAPlayer:: getTotalGames() {
-    return totalGames;
-    
-}
-
-void NBAPlayer:: updateGamesAndPoints(int points) {
-    totalGames = totalGames + 1;
-    totalPoints = totalPoints + points; 
-    
-}
+using namespace std; 
 
 
-void NBAPlayer ::display () {
-    cout << "This is the current running total for:" << endl;
-   cout<< "Name: "<<playerName << endl; 
-  cout  << "Team Name: " << teamName << endl ;
-    cout<<"Total Points: " << totalPoints << endl;
-    cout<<"Total number of games: " << totalGames << endl;
-}
 
-
-double NBAPlayer:: avgPointsPerG(int totalPoints, int totalNumberOfGames){
-    
-    double averScorePerG;
-    averScorePerG = totalPoints/ totalNumberOfGames; 
-    return averScorePerG;
-    
-}
 int main()
 {
-   char playerName[81];
-   char playerTeamName[81]; 
-   int totalPoints ; 
-   int totalGames ; 
-   double averageScore ;
-   
-   
-   NBAPlayer  lebronJames("Lebron James" , "Cavaliers", 0, 0 );
-   NBAPlayer *playerPointer; 
-   
+    int totalNumberSpheres;
+    double totalVolume = 0.00;
+    const double pi = 3.14; 
+    double volume;
+    double radius; 
     
+cout << "Hello this program computes the total of 'n' number of spheres" << endl ; 
+cout << "Please enter a positive number for the total number of spheres" << endl ;
+cin >> totalNumberSpheres;
+do {
     
-    lebronJames.display();
-    lebronJames.updateGamesAndPoints(42);
-    lebronJames.display();
+    cout << "Please enter the radius for your sphere" << endl;
+    cin >> radius;
+    volume = (4/3)*pi*pow(radius,3);
+    cout << volume<< endl;
+    totalVolume = volume + totalVolume;
+    --totalNumberSpheres;
     
-   totalPoints = lebronJames.getTotalPoints();
-   totalGames = lebronJames.getTotalGames();
-   averageScore = lebronJames.avgPointsPerG(totalPoints, totalGames);
-   cout << "this is the average  score:" << averageScore<< endl; 
-   
-    lebronJames.updateGamesAndPoints(39);
-    lebronJames.display();
+}while (totalNumberSpheres!=0);
+
+cout << totalVolume << endl;
 
     return 0;
-}
-
-void strcpy( char dest[], char source[] )
-{
-  int ix;
-  for ( ix = 0; source[ix] != '\0'; ++ix )
-    dest[ix] = source[ix];
-  dest[ix] = '\0';
-}
-int strlen( char str[] )
-{
-  int ix;
-  for ( ix = 0; str[ix] != '\0'; ++ix );
-  return ix;
-}
-char *strnewcpy( char source[] )
-{
-  int size;
-  char *dest;
-  size = strlen( source );
-  dest = new char[ size + 1 ];
-  strcpy( dest, source );
-  return dest;
 }
