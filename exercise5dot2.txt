@@ -1,0 +1,135 @@
+﻿Christofer Paes 
+GCC / CSC 230
+ 11/19/2021
+Exercise 5.2
+5.2 Caches are important to providing a high-performance memory hierarchy to processors.  Below is a list of 32-bit memory address references, given as word addresses.
+5.2.1 [10] <§5.3> For each of these references, identify the binary address, the tag, and the index given a direct-mapped cache with 16 one-word blocks.  Also list if each reference is a hit or a miss, assuming the cache is initially empty.
+
+
+Word Address
+	Binary Address
+	Tag
+	Index
+	Hit/Miss
+	3
+	0000 0011
+	0
+	3
+	M
+	180
+	1011 0100
+	011
+	4
+	M
+	43
+	0010 1001
+	010
+	1
+	M
+	2
+	0000 0010
+	0
+	2
+	M
+	191
+	1011 1111
+	011
+	7
+	M
+	88
+	0101 1000
+	101
+	0
+	M
+	190
+	1011 1110
+	011
+	6
+	M
+	14
+	0000 1110
+	0
+	6
+	M
+	181
+	1011 0101
+	011
+	5
+	M
+	44
+	0010 1100
+	010
+	4
+	M
+	186
+	1011 1010
+	011
+	2
+	M
+	253
+	1111 0011
+	111
+	3
+	M
+	5.2.2 [10] <§5.3> For each of these references, identify the binary address, the tag, and the index given a direct-mapped cache with two-word blocks and a total size of 8 blocks.  Also list if each reference is a hit or a miss, assuming the cache is initially empty.
+Word Address
+	Binary Address
+	Tag
+	Index
+	Hit/Miss
+	3
+	0000 0011
+	0
+	1
+	M
+	180
+	1011 0100
+	11
+	2
+	M
+	43
+	0010 1001
+	010
+	3
+	M
+	2
+	0000 0010
+	0
+	4
+	M
+	191
+	1011 1111
+	011
+	5
+	M
+	88
+	0101 1000
+	101
+	6
+	M
+	190
+	1011 1110
+	011
+	7
+	M
+	14
+	0000 1110
+	0
+	8
+	M
+	181
+	1011 0101
+	011
+	9
+	M
+	44
+	0010 1100
+	010
+	10
+	M
+	186
+	1011 1010
+	011
+	11
+	M
+	253

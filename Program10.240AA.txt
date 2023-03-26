@@ -1,0 +1,40 @@
+﻿Christofer Paes
+Program # 10 
+CSC 240 AA 
+Robert Simms
+This is a knowledge base for prolog to be used ot run queries on. 
+
+
+%actor( <person's name>, <home town>, <birth year>, <death year> ).
+actor( seanSchemmel ,newYork, 1970, alive ).
+actor( dannyGreen ,waterLoo, 1968, alive ).
+actor( christopherSabath ,washingtonD.C., 1970, alive ).
+actor( jakeGyllenhaal ,losAngeles, 1980, alive ).
+actor( joePesci ,newark, 1943, alive ).
+
+
+
+
+
+
+%movieRole(<actor name>, <character name> , <movie name> ).
+movieRole( seanSchemmel, goku, dBZbattleOfTheGods);
+movieRole( joePesci, tommyDevito, goodFellas );
+movieRole( jakeGyllenhaal,louBloom, nightCrawler );
+movieRole(dannyGreen , yugiMoto, darkSideDimensions );
+movieRole( christopherSabath,almight , worldHeroesMission);
+
+
+%movie(<movie name> , <movie year> , <movie director>). 
+movie( goodFellas, 1990, martinScorsese ).
+movie( theDeparted, 2006, martinScorsese ).
+movie( reservoirDogs, 1992, quentinTaratino ).
+movie( pulpFiction, 1994, quentinTaratino ).
+movie( friday, 1995, garyGray).
+
+
+%town(<city> , <state> , <country> , <population> ). 
+town( phoenix, aZ, u.S, 163000000).
+town( tempe, aZ, uS, 187454 ).
+town( mesa, aZ, u.S., 499720).
+town( yuma,  a.Z., u.S., 96439 ).

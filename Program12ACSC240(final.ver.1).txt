@@ -1,0 +1,119 @@
+﻿Christofer Paes 
+Program 12
+CSC 240AA Robert Simms/MCC
+These are procedures that are to be used to move through a matrix, count the total number of elements in a matrix, insert an element into a matrix at a given position(Row,Column) with a given item and return a matrix with the given item in the matrix at the specified location. 
+
+
+(define (countRow ist )
+  (define x 0)
+  (if(null? ist)
+     0
+       (if(not (pair? (car ist) ) )
+          1
+ (+ 1 (countRow (cdr ist)  ) x  )
+ )
+           ) )
+       
+    
+    
+        
+      
+     
+(define(getRowInReverse ist rowN)
+  (if(= (countRow ist) 0)
+     '()
+     (if(or(= (countRow ist) 1)(= rowN (countRow ist) ) )
+        (car ist)
+        (getRowInReverse (cdr ist) rowN)
+        
+     
+  
+
+
+) ) )
+
+
+
+
+
+
+(define(countRow1 ist)
+  (define x 0)
+  (if(null? ist)
+     0
+    (if(null? (car(cdr(car ist) ) ) )
+        (+  1 x)
+       (+ 1 (countRow1 (cdr ist)) x)
+        
+       
+       
+
+
+     ) ) ) 
+
+
+     
+
+
+(define(countColumn ist)
+  (define x 0)
+  (if(null? ist)
+     0
+  (if(not(= (countRow ist) 1 ) ) 
+        (+ 1 (countColumn (cons (cdr(car ist) ) (cdr ist)) ) x)
+           (if(null? (car ist) ) 
+     (+ 1 (countColumn (cdr ist)  ) x)
+     (+ 1 (countColumn (cons (cdr(car ist) ) (cdr ist)) ) x) )
+     
+   )
+  
+  ) )
+(define(getColumn ist columnN)
+  (if(null? ist)
+    '()
+     (if(and(= (countRow ist) 1) (=(countColumn ist) 1))
+            (car (car ist))
+            (getColumn (cons  (cdr(car ist)) (cdr ist)) (- columnN)) )
+        )
+     )
+  
+     (define(getCell Matrix Row Column ) 
+        (if(not(= Row 0) )
+       (getCell (getRowInReverse Matrix Row) 0 Column   )
+       (if(and(= Column 1) (= Row  0) )
+            (car Matrix)    
+       (if(and(not(= Column 1)) (= Row 0) )
+       (getCell (cdr Matrix) 0 (- Column 1) )
+       (getCell  Matrix Row Column  )
+         
+)
+     )
+        )
+
+
+       
+    )
+
+
+
+
+
+
+
+
+
+
+(define(setCell Matrix Row Column Item)
+(if(null? Matrix )
+   '()
+   (if (not(<= Row 0))
+      (cons (car Matrix) (setCell (cdr Matrix)   (- Row 1)  Column Item ))
+      (if(and(> Column 0) (= Row 0)) 
+       (cons (setCell (car Matrix) -100   Column Item) (cdr Matrix))   
+         (if(and(> Column 1) (= Row -100) )
+          (cons (car Matrix) (setCell (cdr Matrix) Row (- Column 1) Item) )
+      (cons Item (cons (car Matrix) (cdr Matrix))) 
+       
+ 
+   
+  ) ) ) ) )

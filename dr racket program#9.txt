@@ -1,0 +1,39 @@
+﻿(define ints '(41 42 57 95  02) )
+(define intss '( (01 01 01 04 05) (06 07 08 09 10) ) )
+
+
+(define (getBagCount list item)
+  (if(null? list)
+     0
+     (if(= (car list) item)
+        (+ 1 (getBagCount (cdr list) item))
+       (getBagCount (cdr list) item)
+        )))
+(define(insertBag list item)
+  (if(null? list)
+     (cons item list )
+     (cons (car list) (insertBag (cdr list) item  )  ) 
+           )
+     )
+(define(deleteBag list item)
+  (if(null? list)
+    '()
+     (if(= (car list) item)
+        (cdr list)
+        (cons (car list) (deleteBag (cdr list) item) )
+        )
+     )
+  )
+
+
+
+
+(define (intersectBag listA listB)
+  (if(null? listA)
+     '()
+     (if(= (car listA) (car listB))
+           (cons (cons (car listA) (car listB) )(cons (cdr listA) (cdr listB) ) )
+           (intersectBag (cdr listA) (cdr listB))
+           )
+        )
+     )

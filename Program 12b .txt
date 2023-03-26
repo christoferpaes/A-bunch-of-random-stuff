@@ -1,0 +1,409 @@
+﻿;Christofer Patrick Paes
+;Program 12b 
+; CSC240 AA 
+; Connect Four -- Game state is initialized with (CUPStartGame) 
+; Game is not finished
+; there are many helper functions within the game to assist with working with a matrix 
+
+
+
+
+(define (countRow ist )
+  (define x 0)
+  (if(null? ist)
+     0
+       (if(not (pair? (car ist) ) )
+          1
+ (+ 1 (countRow (cdr ist)  ) x  )
+ )
+           ) )
+       
+    
+    
+        
+      
+     
+(define(getRowInReverse ist rowN)
+  (if(= (countRow ist) 0)
+     '()
+     (if(or(= (countRow ist) 1)(= rowN (countRow ist) ) )
+        (car ist)
+        (getRowInReverse (cdr ist) rowN)
+        
+     
+  
+
+
+) ) )
+
+
+
+
+
+
+(define(countRow1 ist)
+  (define x 0)
+  (if(null? ist)
+     0
+    (if(null? (car(cdr(car ist) ) ) )
+        (+  1 x)
+       (+ 1 (countRow1 (cdr ist)) x)
+        
+       
+       
+
+
+     ) ) ) 
+
+
+     
+
+
+(define(countCell ist)
+  (define x 0)
+  (if(null? ist)
+     0
+  (if(not(= (countRow ist) 1 ) ) 
+        (+ 1 (countCell (cons (cdr(car ist) ) (cdr ist)) ) x)
+           (if(null? (car ist) ) 
+     (+ 1 (countCell (cdr ist)  ) x)
+     (+ 1 (countCell (cons (cdr(car ist) ) (cdr ist)) ) x) )
+     
+   )
+  
+  ) )
+(define(getColumn ist columnN)
+  (if(null? ist)
+    '()
+     (if(and(= (countRow ist) 1) (=(countCell ist) 1))
+            (car (car ist))
+            (getColumn (cons  (cdr(car ist)) (cdr ist)) (- columnN)) )
+        )
+     )
+  
+     (define(getCell Matrix Row Column ) 
+        (if(not(= Row 0) )
+       (getCell (getRowInReverse Matrix Row) 0 Column   )
+       (if(and(= Column 1) (= Row  0) )
+            (car Matrix)    
+       (if(and(not(= Column 1)) (= Row 0) )
+       (getCell (cdr Matrix) 0 (- Column 1) )
+       (getCell  Matrix Row Column  )
+         
+)
+     )
+        )
+
+
+       
+    )
+
+
+
+
+(define(setCellM Matrix Row Column Item)
+(if(null? Matrix )
+   '()
+   (if (not(<= Row 0))
+      (setCellM (cons (car Matrix )(cdr Matrix))   (- Row 1)  Column Item )
+      (if(and(> Column 0) (= Row 0)) 
+       (cons (setCellM (car Matrix) -100   Column Item) (cdr Matrix))   
+         (if(and(> Column 1) (= Row -100) )
+          (cons (car Matrix) (setCellM (cdr Matrix) Row (- Column 1) Item) )
+      (cons Item (cons (car Matrix) (cdr Matrix))) 
+       
+ 
+   
+  ) ) ) ) )
+
+
+
+
+
+
+
+
+
+
+
+
+(define(setCell Matrix Row Column Item )
+  (if(and(= Row 0) (= Column 1) )
+     (cons (cons Item (car Matrix) ) (cdr Matrix) ) 
+     (if(not(= Row 0))
+    (cons (cons Item (car Matrix) )(setCell (cdr Matrix) (- Row 1) Column Item  ) ) 
+    (if(and(= Row 0) (not(= Column 1)))
+        (cons  (car Matrix) (setCell (car(cdr Matrix))  Row Column Item  ) )
+       (cons (car Matrix) (setCell (cdr Matrix)  Row  (- Column 1) Item  ) )
+      
+         
+))))
+
+
+
+
+  
+(define CUPGame 0)
+
+
+(define(CUPStartGame) 
+(begin
+(set! CUPGame '( 1 2 (0 0 0 0 0 0) (0 0 0 0 0 0) (1 1 1 1 1 1) (0 0 0 0 0 0) (0 0 0 0 0 0) (0 0 0 0 0 0) (0 0 0 0 0 0) ) )
+
+
+
+
+(display "This is the connect four game(copyright Hasbro inc.)" ) (newline)
+
+
+#t))
+
+
+
+
+
+
+  
+
+
+    (define (CUPShowGame )
+(begin
+  
+           (newline)(newline)
+           (newline)
+           '(this is column format)
+           (display (cdr(cdr CUPGame) ) )
+           
+           (newline)
+
+
+      ) )
+
+
+(define(convertColumn Matrix t c)
+  (if(= c 0)
+     '()
+     (if(and(> c 5) (> t 1))
+       
+     (cons
+      (car (getRowInReverse  Matrix t ))     
+     (convertColumn Matrix (- t 1) c) )
+     (if(and (> c 5) (= t 1) )
+        (cons 
+         (car (getRowInReverse Matrix t ))
+                   (convertColumn Matrix (+ t 6) (- c 1))
+                )
+        (if(and (> c 4) (> t 1) )
+           (cons
+            (car (getRowInReverse   Matrix  t))
+                 (convertColumn Matrix (- t 1) c)
+                 )
+           (if(and(> c 4) (= t 1) )
+              (cons
+               (car (getRowInReverse Matrix t ))
+               (convertColumn Matrix (+ t 6) (- c 1) )
+               )
+
+
+               (if(and(> c 3 ) (> t 1) )
+                  (cons
+                   (car
+                    (getRowInReverse Matrix t ) )
+                   (convertColumn Matrix (- t 1) c)
+                    )
+                  (if(and(> c 3) (= t 1))
+                         (cons
+                          (car
+                           (getRowInReverse Matrix t))
+                           (convertColumn Matrix (+ t 6) (- c 1) )
+                           )
+                         (if(and (> c 2) (> t 1) )
+                            (cons
+                             (car
+                              (getRowInReverse Matrix t))
+                             
+                  (convertColumn Matrix (- t 1) c) )
+                            (if(and(> c 2) (= t 1))
+                               (cons
+                                (car
+                                 (getRowInReverse Matrix t))
+                                (convertColumn Matrix (+ t 6) (- c 1))
+                                )
+                               (if(and(> c 1) (> t 1 ))
+                                  (cons
+                                   (car
+                                    (getRowInReverse Matrix t))
+                                   (convertColumn Matrix (- t 1) c))
+                                  (if(and (> c 1) ( = t 1) )
+                                     (cons
+                                      (car
+                                       (getRowInReverse Matrix t  ))
+                                       (convertColumn Matrix t (- c 1) )
+            )
+                                     (convertColumn Matrix t (- c 1) )) 
+    )
+  )
+               )
+                            )
+                         )
+                  )
+               ) ) ) )   )
+
+
+
+
+    
+
+
+
+
+(define(CUPMakeMove Matrix Column)
+  (if(=(countRow1 Matrix) 0)
+  '()
+  (if(= Column 1)   
+     (car Matrix)
+     (CUPMakeMove (cdr Matrix) (- Column 1) )
+     )) )
+
+
+  
+(define(CUPMarkMove move)
+(begin 
+(set! CUPGame
+(cons 
+(CUPNextPlayer )
+(cons
+(CUPMove (car(cdr(cdr CUPGame))) (car CUPGame ) move) '()
+) 
+) 
+) 
+move) )
+
+
+(define(CUPMove ist token move)
+  (if(= move 1)
+     (cons token (cdr ist) )
+     (cons
+      (car ist)
+      (CUPMove (cdr ist) token (- move 1))
+) )
+  )
+
+
+
+
+
+
+(define(CUPLegalMoveP Column)
+(begin
+(if (=  (CUPLegalMoveX (CUPGiveMeColumn (cdr (cdr CUPGame)) Column) ) 0)
+#true
+#false
+)
+ ) 
+)
+
+
+(define(CUPLegalMoveX Column)
+  (if(null?  Column) 
+     1
+(if(= (car Column) 0)
+0
+(CUPLegalMoveX (cdr Column) ) 
+) ))
+
+
+
+
+
+
+
+
+(define(CUPGiveMeColumn Matrix Column)
+  (if(=(countRow1 Matrix) 0)
+  '()
+  (if(= Column 1)
+     (car Matrix)
+     (CUPGiveMeColumn (cdr Matrix) (- Column 1) )
+     )) )
+
+
+(define x 0)
+  (define(moveToNextRow  ist)
+
+
+    (if(or(null? ist) (= x 4) )
+       0
+(if(= (car ist) 1)
+(+ x  (moveToNextRow (cdr ist) )  1)
+(if(= (car ist) 0)
+   (- x  (moveToNextRow (cdr ist)) 100)
+(moveToNextRow (cdr ist) )
+
+
+ 
+)
+)
+) )
+
+
+   (define(getCell1 Matrix Row Column )
+         (if(null? Matrix)
+            '()
+        (if(not(= Row 0) )
+       (getCell1 (CUPGiveMeColumn Matrix Row) 0 Column   )
+       (if(and(= Column 1) (= Row  0) )
+            (car Matrix)    
+       (if(and(not(= Column 1)) (= Row 0) )
+       (getCell1 (cdr Matrix) 0 (- Column 1) )
+       (getCell1  Matrix Row Column  )
+         
+)
+     )
+        )
+
+
+       
+    ))
+
+
+(define Row 0)
+(define Column 0)
+(define(diagonalWin t )
+  (if(= t 0)
+     x
+  (if (= (getCell1  (cdr (cdr CUPGame) ) (+ Column 1) (+ Row 1) ) 1)
+      (+ x(diagonalWin (- t 1) )1)
+      (diagonalWin (- t 1)
+      )
+  )
+  ) )
+(define y 0)
+(define(checkColumn colm row)
+
+
+  (if  ( < row 1)  
+      0 
+ (if(and(= (getCell1 (cdr (cdr CUPGame)) colm row    ) 1) (<= row 6))
+  (+ y (checkColumn colm (- row 1) ) 1)  
+ (checkColumn colm (- row  1) ) 
+    )) )
+
+
+(define(WinP Column)
+  (if(or (>= (checkColumn Column 6)  4)( = (diagonalWin 4) 4) )
+      #t
+      #f
+      ))
+
+
+(define( checkPlayer)
+  (if (= (CUPNextPlayer) 2)
+      #t
+      #f))
+
+
+(define (CUPNextPlayer)
+(if( = (car CUPGame) 1)    
+   2
+   1))

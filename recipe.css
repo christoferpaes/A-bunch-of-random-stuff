@@ -1,0 +1,60 @@
+
+h1
+{
+    text-decoration: underline;
+    font-size: 22pt;
+
+  background-color: rgb(240, 240, 240);
+  
+    color: #A4A400;
+}
+.title{
+   text-align: center; 
+}
+
+.bold{
+    font-weight: bold;
+}
+
+h2 {
+    text-align: left;
+    
+   text-decoration: underline;
+   color: #A4A400;
+   font-size: 18pt;
+
+   background-color: rgb(240, 240, 240);
+}
+.h2 { padding: 0px;
+    text-indent: 60px;
+    background-color: #fff2ac;
+    font-size-adjust: 0.4;
+
+    position: relative;
+  
+
+}
+p {
+    font-size: 11pt;
+position: static;
+
+}
+ul li, ul p {
+ font-size:  11pt;
+}
+span p {
+    padding: 1px;
+ margin: -0.25px;
+}
+
+ol p {
+ padding: -2px;
+    margin: -1px;
+}
+footer {
+    text-align: left;
+}
+
+ol {
+    margin: -4px;
+}

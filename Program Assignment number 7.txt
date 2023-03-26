@@ -1,0 +1,57 @@
+﻿Program Assignment number 7
+Christofer Patrick Paes
+MCC/Robert Simms/CSC 240AA
+10/18/21
+The functions below are written to compute the dot Product of two lists , the second function is to return true if there are duplicates of a number in a list, and the third function is to find the largest difference between two lists without creating a new list.
+
+
+
+
+;1 
+(define(dotProduct listOne listTwo)
+  (if(null? listOne)
+     0
+     (+ (* (car listOne ) (car listTwo))
+        (dotProduct (cdr listOne) (cdr listTwo) )
+     )
+
+
+  )
+
+
+
+
+  )
+;2
+(define(areThereDupes list)
+  (if(null? list)
+     0
+     
+     (if(= (car list) (car (cdr list)))
+        #t
+        #f
+        )))
+;3
+(define(largestDifference list list_)
+   
+ 
+  (if(null?  list)
+     (- (car list) (car list_))
+ 
+  (if(>= (- (car list) (car list_)) (- (car (cdr list)) (car (cdr list_))) )
+  (largestDifference (cdr list) (cdr list_) )
+(- (car (cdr list)) (car (cdr list_)))
+
+
+       
+      
+           )
+
+
+     )
+    
+ 
+ 
+    
+  
+     )
